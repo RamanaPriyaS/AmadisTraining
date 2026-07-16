@@ -1,0 +1,65 @@
+body{
+    background-color:#faf7f7;
+    font-family:Arial;
+    color:black;
+}
+header{
+    background-color:rgb(149, 136, 205);
+    color:white;
+    padding:20px;
+}
+header h1{
+    text-align:center;
+}
+nav{
+    text-align:center;
+    margin-top:20px;
+}
+nav a{
+    color:white;
+    margin:15px;
+    font-size:18px;
+}
+nav a:hover{
+    color:rgb(14, 14, 13);
+}
+section{
+    background-color:white;
+    margin:20px;
+    padding:20px;
+}
+h3{
+    color:rgb(133, 82, 139);
+}
+p{
+    text-align:justify;
+}
+th{
+    background-color:rgb(133, 82, 139);
+    color:white;
+}
+table, th, td{
+    border:1px solid rgb(75, 52, 75);
+}
+th, td{
+    padding:10px;
+    text-align:center;
+}
+ul{
+    margin-left:20px;
+}
+#project a{
+    background-color:rgb(209, 179, 234);
+    color:white;
+    padding:8px 15px;
+}
+#project a:hover{
+    background-color:rgb(97, 50, 109);
+}
+form{
+    margin-top:20px;
+}
+label{
+    font-weight:bold;
+}
+
