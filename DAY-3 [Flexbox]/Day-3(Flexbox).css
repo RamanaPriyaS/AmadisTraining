@@ -1,0 +1,30 @@
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+    background-color: rgb(172, 224, 233);
+}
+nav a {
+    
+    color: black;
+    margin-left: 13px;
+}
+div{
+    background-color: rgb(255, 255, 255);
+}
+h2{
+    background-color: lightblue;
+}
+body main section{
+    display: flex;
+    gap:5px;
+    flex-wrap: wrap;
+}
+img{
+    width: 250px;
+    height: 250px;
+}
+#gallery div {
+    flex: 1 1 300px;
+}
