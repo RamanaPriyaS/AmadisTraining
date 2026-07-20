@@ -1,0 +1,31 @@
+*{
+    margin: 0%;
+    padding: 0px;
+}
+header h1{
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700px;
+    font-size: 80px;
+    color: #ffffff;
+}
+header{
+    background-color: rgb(129, 172, 186);
+}
+main img{
+    display: block;
+    height: 400px;
+    width: 500px;
+    margin: 50px auto; 
+}
+main button{
+    display: block;
+    margin: 50px auto; 
+    height: 40px;
+    width: 110px;
+    background-color: rgb(129, 172, 186);
+    color: #ffffff;
+    font-size: 30px;
+    font-weight: bolder;
+}
