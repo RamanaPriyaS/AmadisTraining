@@ -1,0 +1,25 @@
+body{
+    background-color: #bfefff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+header{
+    display: flex;
+    justify-content: center;
+    color: #274088;
+    font-weight: 700;
+}
+
+.container{
+    margin: auto;
+    height:500px;
+    width:500px;
+    background-color: #ffffff;
+}
+h2,h3{
+    color: #274088
+}
+div h2{
+    align-self:center;
+}

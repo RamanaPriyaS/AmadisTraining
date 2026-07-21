@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GUESS GAME </title>
+    <link rel="stylesheet" href="NumberGuess.css">
+    <link rel="icon" href="Image/929b9d9423e84d4e07edf17fd94d5c44.jpg">
+</head>
+<body>
+    <header><h1>Guess Game </h1></header>
+    <main >
+        <div class="container">
+            <h2>How to Play Guess Game</h2>
+            <p class=""welcome>Welcome to Guess Game !!</p>
+            <h3>Rules</h3>
+            <ol type="1">
+                <li>The computer will randomly choose a secret number between 1 and 10.</li>
+                <li>Your goal is to guess the correct number.</li>
+                <li>Enter one guess at a time.</li>
+                <li>If your guess is incorrect, you'll be asked to try again.</li>
+                <li>Every guess counts as one attempt.</li>
+                <li>Once you win, the game displays:</li>
+                <ul>
+                    <li>Your Name</li>
+                    <li>Secret Number</li>
+                    <li>Total Number of Attempts</li>
+                </ul>
+            </ol>
+            <h3>Guess Here</h3>
+            <label for="playerName">Name :</label>
+            <input type="text" id="playerName" placeholder="Enter your name" required>
+            <br><br>
+            <label for="guess">Number :</label> 
+            <input type="number" id="guess" min="1" max="10" placeholder="Enter guess">
+            <br>
+            <br>
+            <button onclick="checkGuess()">Guess</button>
+            <button onclick="restartGame()">Restart</button>
+            <h3 id="message">Summary<br></h3>
+            <div id="summary"></div>
+        </div>
+    </main>
+    <script src="NumberGuess.js"></script>
+</body>
+</html>
