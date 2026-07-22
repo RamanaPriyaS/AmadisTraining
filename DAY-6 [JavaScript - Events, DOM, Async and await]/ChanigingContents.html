@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Content</title>
+</head>
+<body>
+    <!-- //Change content using textContent, innerText , innerHTML -->
+    <p id="demo">
+        <div id="id1">
+            INSIDE DIV TAG
+        </div>
+    </p>
+    <script>
+        const res=document.getElementById("id1");
+        console.log(res.innerHTML);
+        const res1=document.getElementById("demo");
+        res1.innerHTML="<h1>This is written using innerHTML";
+        console.log(res1.innerHTML);
+
+
+    </script>
+</body>
+</html>

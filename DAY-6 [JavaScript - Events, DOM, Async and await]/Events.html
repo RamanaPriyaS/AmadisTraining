@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Events in JavaScript</title>
+</head>
+<body>
+    <h1>Events</h1>
+    <button id="myButton">Click Me</button><br><br>
+    <button id="myButton2">Mouse Over</button><br><br>
+    <input type="text" placeholder="Enter text here"></input><br><br>
+    <script>
+        const button = document.getElementById('myButton');
+        button.addEventListener('click', function() {
+            alert('Button was clicked!');
+        });
+        const button2 = document.getElementById('myButton2');
+        button2.addEventListener('mouseover', function() {
+            alert('Mouse is over the button!');
+        });
+        const inputField = document.querySelector('input');
+        inputField.addEventListener('input', function() {
+            console.log('Input value changed to: ' + inputField.value);
+        });
+    </script>
+</body>
+</html>

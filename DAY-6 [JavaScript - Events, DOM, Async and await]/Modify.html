@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<body>
+  <ul id="fruitList"></ul>
+  <button id="addBtn">Add Fruit</button>
+
+  <script>
+    const fruitList = document.getElementById('fruitList');
+    const addBtn = document.getElementById('addBtn');
+
+    const fruits = ['Apple', 'Banana', 'Mango', 'Orange'];
+    let index = 0;
+
+    addBtn.addEventListener('click', () => {
+      if (index >= fruits.length) {
+        index = 0; 
+      }
+      const li = document.createElement('li');
+      li.textContent = fruits[index];
+      fruitList.appendChild(li);
+      index++;
+    });
+  </script>
+</body>
+</html>

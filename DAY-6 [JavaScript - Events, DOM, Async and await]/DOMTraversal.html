@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM Traversal</title>
+</head>
+<body>
+    <h1>DOM Traversal</h1>
+    <div id="parent">
+        <p class="child">Hi.This is chils-1</p>
+        <p class="child">hello.This is child 2</p>
+        <p class="child">This is child  3</p>
+    </div>
+    <script>
+        const parent = document.getElementById('parent');
+        const children = parent.children;
+        console.log(children);
+        const firstChild = parent.firstElementChild;
+        console.log(firstChild);
+        const lastChild = parent.lastElementChild;      
+        console.log(lastChild);
+
+        // Traversing to the next sibling
+        const nextSibling = firstChild.nextElementSibling;  
+        console.log(nextSibling);
+        const previousSibling = lastChild.previousElementSibling;   
+        console.log(previousSibling);
+
+        //Traversing with child elements
+        const childElements = parent.children;
+        for (let i = 0; i < childElements.length; i++) {
+            console.log(childElements[i]);
+        }
+    </script>
+</body>
+</html>
