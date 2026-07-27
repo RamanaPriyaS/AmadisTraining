@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MovizBook - Select Date & Time</title>
+    <link rel="icon" href="Images/MovizBook.png">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        #booking-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center; 
+            width: 100%;
+            max-width: 500px;
+            margin: 60px auto; 
+            padding: 40px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            background-color: #ffffff;
+            box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        #booking-container h2 {
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+        #movie-title-display {
+            color: #555;
+            font-size: 20px;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .input-group {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-bottom: 25px;
+        }
+
+        .input-group label {
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        .input-group input, .input-group select {
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            outline: none;
+        }
+
+        .proceed-btn {
+            width: 100%;
+            padding: 12px;
+            font-size: 18px;
+            background-color: #333;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.2s;
+        }
+
+        .proceed-btn:hover {
+            background-color: #555;
+        }
+    </style>
+</head>
+<body>
+    <header>
+       <nav>
+            <div class="logo">
+                <img src="Images/MovizBook.png" width="100px" alt="MovizBook Logo"> 
+                <span>MovizBook</span>
+            </div>
+            <div class="nav-link">
+                <a href="user-home.html">Back to Movies</a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <div id="booking-container">
+            <h2>Select Date & Time</h2>
+            
+            <h3 id="movie-title-display">Loading movie...</h3>
+
+            <form id="booking-form">
+                <div class="input-group">
+                    <label for="movie-date">Choose Date:</label>
+                    <input type="date" id="movie-date" required>
+                </div>
+
+                <div class="input-group">
+                    <label for="movie-time">Choose Time:</label>
+                    <select id="movie-time" required>
+                        <option value="" disabled selected>Select a showtime</option>
+                        <option value="10:00 AM">10:00 AM</option>
+                        <option value="1:30 PM">1:30 PM</option>
+                        <option value="5:00 PM">5:00 PM</option>
+                        <option value="8:30 PM">8:30 PM</option>
+                    </select>
+                </div>
+
+                <button type="submit" class="proceed-btn">Proceed to Seat Selection</button>
+            </form>
+        </div>
+    </main>
+
+    <script>
+        // Wrap logic in an IIFE to safely handle execution termination via 'return'
+        (function initDateTimeSelection() {
+            if (!sessionStorage.getItem('loggedInUser')) {
+                alert("Please log in to continue booking.");
+                window.location.href = "login.html";
+                return;
+            }
+
+            const selectedMovie = localStorage.getItem('selectedMovie');
+            const titleDisplay = document.getElementById('movie-title-display');
+
+            if (selectedMovie) {
+                titleDisplay.textContent = "Movie: " + selectedMovie;
+            } else {
+                alert("No movie selected! Returning to home page.");
+                window.location.href = "user-home.html";
+                return;
+            }
+
+            const dateInput = document.getElementById('movie-date');
+            const todayDate = new Date();
+            const year = todayDate.getFullYear();
+            const month = String(todayDate.getMonth() + 1).padStart(2, '0');
+            const day = String(todayDate.getDate()).padStart(2, '0');
+            const localToday = `${year}-${month}-${day}`;
+            
+            dateInput.setAttribute('min', localToday);
+            
+            const bookingForm = document.getElementById('booking-form');
+            
+            bookingForm.addEventListener('submit', function(event) {
+                event.preventDefault(); 
+                const chosenDate = document.getElementById('movie-date').value;
+                const chosenTime = document.getElementById('movie-time').value;
+                
+                localStorage.setItem('selectedDate', chosenDate);
+                localStorage.setItem('selectedTime', chosenTime);
+                window.location.href = "seats.html";
+            });
+        })();
+    </script>
+</body>
+</html>

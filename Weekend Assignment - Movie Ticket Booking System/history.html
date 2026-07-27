@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MovizBook - My Bookings</title>
+    <link rel="icon" href="Images/MovizBook.png">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            background-color: #f9f9f9;
+        }
+
+        #history-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center; 
+            width: 100%;
+            max-width: 800px;
+            margin: 40px auto; 
+            padding: 30px;
+            background-color: #ffffff;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        #history-container h2 {
+            margin-bottom: 30px;
+            color: #333;
+            font-size: 28px;
+            text-align: center;
+        }
+        #tickets-wrapper {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .ticket-card {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            background-color: #fdfdfd;
+            border: 2px dashed #ccc; 
+            border-radius: 10px;
+            position: relative;
+        }
+        .ticket-details {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        .ticket-movie {
+            font-size: 22px;
+            font-weight: bold;
+            color: #111;
+        }
+        .ticket-info {
+            font-size: 15px;
+            color: #555;
+        }
+        .ticket-price-box {
+            text-align: right;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 5px;
+        }
+
+        .booking-id {
+            background-color: #333;
+            color: white;
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-size: 13px;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        .ticket-total {
+            font-size: 20px;
+            font-weight: bold;
+            color: #27ae60;
+        }
+
+        .empty-msg {
+            text-align: center;
+            font-size: 18px;
+            color: #777;
+            padding: 40px 0;
+        }
+
+        .empty-msg a {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 10px 20px;
+            background-color: #333;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+
+        .empty-msg a:hover {
+            background-color: #555;
+        }
+    </style>
+</head>
+<body>
+    <header>
+       <nav>
+            <div class="logo">
+                <img src="Images/MovizBook.png" width="100px" alt="MovizBook Logo"> 
+                <span>MovizBook</span>
+            </div>
+            <div class="nav-link">
+                <a href="user-home.html">Back to Movies</a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <div id="history-container">
+            <h2>My Booking History</h2>
+            <div id="tickets-wrapper">
+            </div>
+        </div>
+    </main>
+
+    <script>
+
+        (function loadBookingHistory() {
+            if (!sessionStorage.getItem('loggedInUser')) {
+                alert("Please log in to view your bookings.");
+                window.location.href = "login.html";
+                return;
+            }
+            
+            const bookingHistory = JSON.parse(localStorage.getItem('myBookings')) || [];
+            const ticketsWrapper = document.getElementById('tickets-wrapper');
+            
+            if (bookingHistory.length === 0) {
+                ticketsWrapper.innerHTML = `
+                    <div class="empty-msg">
+                        <p>You haven't booked any movies yet!</p>
+                        <a href="user-home.html">Browse Movies</a>
+                    </div>
+                `;
+            } else {
+            
+                bookingHistory.reverse().forEach(booking => {
+                    const ticketCard = document.createElement('div');
+                    ticketCard.classList.add('ticket-card');
+                    ticketCard.innerHTML = `
+                        <div class="ticket-details">
+                            <span class="ticket-movie">${booking.movie}</span>
+                            <span class="ticket-info"><strong>Showtime:</strong> ${booking.date} at ${booking.time}</span>
+                            <span class="ticket-info"><strong>Seats:</strong> ${booking.seats.join(', ')}</span>
+                        </div>
+                        <div class="ticket-price-box">
+                            <span class="booking-id">${booking.bookingID}</span>
+                            <span class="ticket-total">₹${booking.total}</span>
+                        </div>
+                    `;
+                    ticketsWrapper.appendChild(ticketCard);
+                });
+            }
+        })();
+    </script>
+</body>
+</html>

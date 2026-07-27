@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MovizBook - Login</title>
+    <link rel="icon" href="Images/MovizBook.png">
+    <link rel="stylesheet" href="style.css">
+    <style>
+      main form {
+        display: flex;
+        justify-content: center;  
+        align-items: center;
+        padding: 30px;
+        flex-direction: column;
+        gap:30px;
+      }
+      button{
+        background-color: rgb(255, 252, 252)
+      }
+      button:hover{
+        background-color: rgb(119,119,119);
+        cursor: pointer;
+      }
+      #login {
+            display: flex;
+            flex-direction: column;
+            align-items: center; 
+            width: 100%;
+            max-width: 450px;
+            margin: 60px auto; 
+            padding: 40px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            background-color: #ffffff;
+        }
+    </style>
+</head>
+<body>
+    <header>
+       <nav>
+            <div class="logo">
+                <img src="Images/MovizBook.png" width="100px" alt="MovizBook Logo"> 
+                <span> MovizBook</span>
+            </div>
+            <div class="nav-link">
+                <a href="#login">Login</a>
+                <a href="signup.html">Sign Up</a>
+            </div>
+        </nav>
+    </header>
+    <main id="login">
+        <form id="login-form">
+            <h2>Login</h2>
+            <div class="input-group">
+                <label for="email">Email : </label>
+                <input type="email" id="email" placeholder="Enter Email ID" required >
+            </div>
+            <div class="input-group">
+                <label for="password">Password : </label>
+                <input type="password" id="password" placeholder="Enter Password" required>
+            </div>
+            <button type="submit">Login</button>
+        </form>
+    </main>
+    <script>
+        const loginForm = document.getElementById('login-form');
+        
+        loginForm.addEventListener('submit', function(event){
+            event.preventDefault();
+            
+            const emailInput = document.getElementById('email').value;
+            const passwordInput = document.getElementById('password').value;
+           
+            const users = JSON.parse(localStorage.getItem('registeredUsers')) || [];
+            const validUser = users.find(user => user.email === emailInput && user.password === passwordInput);
+            
+            if (validUser) {
+
+                sessionStorage.setItem('loggedInUser', validUser.email); 
+                window.location.href = "user-home.html";
+            } else {
+            
+                alert("Invalid email or password. Please try again or sign up if you don't have an account.");
+            }
+        });
+    </script>
+</body>
+</html>

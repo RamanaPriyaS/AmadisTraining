@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .profile-dropdown {
+            position: relative;
+            display: inline-block;
+        }
+        .profile-btn {
+            background-color: transparent;
+            border: 2px solid #333;
+            padding: 8px 16px;
+            font-size: 15px;
+            cursor: pointer;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+        .profile-btn:hover {
+            background-color: #f0f0f0;
+        }
+        .dropdown-content {
+            display: none; 
+            position: absolute;
+            right: 0; 
+            margin-top: 10px;
+            background-color: white;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            border-radius: 5px;
+            z-index: 100;
+            overflow: hidden;
+        }
+        .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            font-size: 16px;
+            text-align: left;
+        }
+        .dropdown-content a:hover {
+            background-color: #f1f1f1;
+        }
+        .dropdown-content hr {
+            margin: 0;
+            border: 0;
+            border-top: 1px solid #ccc;
+        }
+        .show {
+            display: block;
+        }
+        #Moviesavailable {
+            display: flex;
+            justify-content: center; 
+            flex-wrap: wrap; 
+            gap: 40px; 
+            padding: 40px;
+        }
+        .movies {
+            display: flex;
+            flex-direction: column;
+            width: 300px; 
+            background-color: white; 
+        }
+        .movies img {
+            width: 100%; 
+            height: 450px; 
+            object-fit: cover; 
+        }
+        .book-btn {
+            width: 100%; 
+            padding: 12px 0;
+            background-color: #f2f2f2;
+            border: 1px solid #ccc;
+            border-top: none; 
+            color: black;
+            font-size: 18px;
+            font-weight: bold;
+            text-align: center;
+            cursor: pointer;
+        }
+        .book-btn:hover {
+            background-color: #ddd;
+        }
+        .search-container {
+            flex-grow: 1; 
+            display: flex;
+            justify-content: center; 
+            max-width: 500px; 
+            margin: 0 20px; 
+        }
+        .search-container input {
+            width: 100%;
+            padding: 8px 16px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            outline: none;
+            border-radius: 5px 0 0 5px; 
+        }
+        .search-container button {
+            padding: 8px 16px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-left: none;
+            background-color: #333;
+            color: white;
+            cursor: pointer;
+            border-radius: 0 5px 5px 0; 
+        }
+        #genre-filter {
+            padding: 8px 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-left: 15px;
+            outline: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <header>
+       <nav>
+            <div class="logo">
+                <img src="Images/MovizBook.png" width="100px" alt="MovizBook Logo"> 
+                <span> MovizBook</span>
+            </div>
+            <div class="search-container">
+                <input type="text" id="search-input" placeholder="Search Movies Here...">
+                <button id="search-btn">Search</button>
+                <select id="genre-filter">
+                    <option value="all">All Genres</option>
+                    <option value="action">Action</option>
+                    <option value="adventure">Adventure</option>
+                    <option value="animal">Animal</option>
+                    <option value="classic">Classic</option>
+                    <option value="comedy">Comedy</option>
+                    <option value="drama">Drama</option>
+                    <option value="family">Family</option>
+                    <option value="fantasy">Fantasy</option>
+                    <option value="musical">Musical</option>
+                    <option value="mystery">Mystery</option>
+                    <option value="princess">Princess</option>
+                    <option value="romance">Romance</option>
+                    <option value="sci-fi">Sci-Fi</option>
+                    <option value="thriller">Thriller</option>
+                </select>
+            </div>
+            <div class="profile-dropdown">
+            <button id="profile-btn" class="profile-btn">Profile </button>
+            <div id="dropdown-menu" class="dropdown-content">
+                <a href="history.html">My Bookings</a>
+                <a href="#">Settings</a>
+                <hr>
+                <a href="login.html" id="logout-btn">Logout</a>
+            </div>
+            </div>
+        </nav>
+        </header>
+        <main>
+            <div id="Moviesavailable">
+                <h2 id="no-results-msg" style="display: none; width: 100%; text-align: center; color: red;"> Oops MOVIE NOT FOUND</h2>
+                <div class="movies" data-genre="adventure romance fantasy" data-availability="now-showing">
+                    <img src="Images/aladdin.avif" alt="Aladdin">
+                    <button class="book-btn">Book Now</button>
+                </div>
+                <div class="movies" data-genre="animal classic drama" data-availability="now-showing">
+                    <img src="Images/bambi.avif" alt="Bambi">
+                    <button class="book-btn">Book Now</button>
+                </div>
+                <div class="movies" data-genre="princess romance fantasy" data-availability="now-showing">
+                    <img src="Images/beauty-1532612274.avif" alt="Beauty and The Beast">
+                    <button class="book-btn">Book Now</button>
+                </div>
+                <div class="movies" data-genre="princess classic fantasy" data-availability="now-showing">
+                    <img src="Images/cinderella.avif" alt="Cinderella">
+                    <button class="book-btn">Book Now</button>
+                </div>
+                <div class="movies" data-genre="animal adventure comedy" data-availability="now-showing">
+                    <img src="Images/dolmantians 101.avif" alt="101 Dalmatians">
+                    <button class="book-btn">Book Now</button>
+                </div>
+                <div class="movies" data-genre="princess musical romance" data-availability="now-showing">
+                    <img src="Images/frog-1532612274.avif" alt="Princess and The Frog">
+                    <button class="book-btn">Book Now</button>
+                </div>
+                <div class="movies" data-genre="princess adventure musical" data-availability="now-showing">
+                    <img src="Images/frozen.avif" alt="Frozen-1">
+                    <button class="book-btn">Book Now</button>
+                </div>
+                <div class="movies" data-genre="adventure sci-fi comedy" data-availability="now-showing">
+                    <img src="Images/lilo and stitch.avif" alt="Lilo and Stitch">
+                    <button class="book-btn">Book Now</button>
+                </div>
+                <div class="movies" data-genre="animal adventure drama" data-availability="now-showing">
+                    <img src="Images/lionking.avif" alt="The Lion King">
+                    <button class="book-btn">Book Now</button>
+                </div>
+                <div class="movies" data-genre="princess fantasy musical" data-availability="now-showing">
+                    <img src="Images/little mermaid.avif" alt="The Little Mermaid">
+                    <button class="book-btn">Book Now</button>
+                </div>
+                <div class="movies" data-genre="adventure princess musical" data-availability="now-showing">
+                    <img src="Images/moana-1532612277.avif" alt="Moana">
+                    <button class="book-btn">Book Now</button>
+                </div>
+                <div class="movies" data-genre="adventure princess action" data-availability="now-showing">
+                    <img src="Images/mulan-1532612648.avif" alt="Mulan">
+                    <button class="book-btn">Book Now</button>
+                </div>
+                <div class="movies" data-genre="adventure fantasy classic" data-availability="now-showing">
+                    <img src="Images/peter pan.avif" alt="Peter Pan">
+                    <button class="book-btn">Book Now</button>
+                </div>
+                <div class="movies" data-genre="adventure animal action" data-availability="now-showing">
+                    <img src="Images/rescuers-1532612648.avif" alt="Rescuers Down Under">
+                    <button class="book-btn">Book Now</button>
+                </div>
+                <div class="movies" data-genre="animal adventure classic" data-availability="now-showing">
+                    <img src="Images/robin-hood-1532612648.avif" alt="Robin Hood">
+                    <button class="book-btn">Book Now</button>
+                </div>
+                <div class="movies" data-genre="classic adventure fantasy" data-availability="now-showing">
+                    <img src="Images/toast-1532612648.avif" alt="The Brave Little Toaster">
+                    <button class="book-btn">Book Now</button>
+                </div>
+                <div class="movies" data-genre="action sci-fi adventure" data-availability="now-showing">
+                    <img src="Images/bighero6.jpg" alt="Big Hero 6">
+                    <button class="book-btn">Book Now</button>
+                </div>
+                <div class="movies" data-genre="animal action comedy" data-availability="now-showing">
+                    <img src="Images/bolt.jpg" alt="Bolt">
+                    <button class="book-btn">Book Now</button>
+                </div>
+                <div class="movies" data-genre="princess adventure musical" data-availability="now-showing">
+                    <img src="Images/frozen2.jpg" alt="Frozen 2">
+                    <button class="book-btn">Book Now</button>
+                </div>
+                <div class="movies" data-genre="adventure action fantasy" data-availability="now-showing">
+                    <img src="Images/raya.jpg" alt="Raya and the Last Dragon">
+                    <button class="book-btn">Book Now</button>
+                </div>
+                <div class="movies" data-genre="princess adventure comedy" data-availability="now-showing">
+                    <img src="Images/tangled_5.webp" alt="Tangled">
+                    <button class="book-btn">Book Now</button>
+                </div>
+                <div class="movies" data-genre="animal comedy mystery" data-availability="now-showing">
+                    <img src="Images/zootopia1.jpg" alt="Zootopia 1">
+                    <button class="book-btn">Book Now</button>
+                </div>
+                <div class="movies" data-genre="animal comedy mystery" data-availability="now-showing">
+                    <img src="Images/zootopia2.jpg" alt="Zootopia 2">
+                    <button class="book-btn">Book Now</button>
+                </div>
+                <div class="movies" data-genre="family fantasy musical" data-availability="now-showing">
+                    <img src="Images/images (5).jpg" alt="Encanto">
+                    <button class="book-btn">Book Now</button>
+                </div>
+                <div class="movies" data-genre="fantasy mystery thriller" data-availability="upcoming">
+                    <img src="Images/hexed.jpeg" alt="Hexed">
+                    <button class="book-btn">Book Now</button>
+                </div>
+            </div>
+        </main>
+    <script>
+        // Wrapped in an Immediately Invoked Function Expression (IIFE) to safely use return
+        (function checkLogin() {
+            if (!sessionStorage.getItem('loggedInUser')) {
+                alert("Access Denied. Please log in first.");
+                window.location.href = "login.html";
+                return;
+            }
+        })();
+
+        const logoutBtn = document.getElementById('logout-btn');
+        logoutBtn.addEventListener('click', function(e) {
+            e.preventDefault(); 
+            sessionStorage.removeItem('loggedInUser'); 
+            window.location.href = "login.html"; 
+        });
+
+        const profileBtn = document.getElementById('profile-btn');
+        const dropdownMenu = document.getElementById('dropdown-menu');
+        
+        profileBtn.addEventListener('click', function(event) {
+            dropdownMenu.classList.toggle('show');
+            event.stopPropagation();
+        });
+
+        window.addEventListener('click', function() {
+            if (dropdownMenu.classList.contains('show')) {
+                dropdownMenu.classList.remove('show');
+            }
+        });
+
+        const searchInput = document.getElementById('search-input');
+        const searchBtn = document.getElementById('search-btn');
+        const movieCards = document.querySelectorAll('.movies');
+        const noResultsMsg = document.getElementById('no-results-msg');
+        const genreFilter = document.getElementById('genre-filter'); 
+        
+        function filterMovies() {
+            const searchTerm = searchInput.value.trim().toLowerCase();
+            const selectedGenre = genreFilter.value; 
+            let moviesFound = 0;   
+            
+            movieCards.forEach(card => {
+                const title = card.querySelector('img').getAttribute('alt').toLowerCase();
+                const cardGenre = card.getAttribute('data-genre');
+                const textMatch = title.includes(searchTerm);
+                const genreMatch = (selectedGenre === 'all' || cardGenre.includes(selectedGenre));
+                
+                if (textMatch && genreMatch) {
+                    card.style.display = 'flex'; 
+                    moviesFound++; 
+                } else {
+                    card.style.display = 'none'; 
+                }
+            });
+            
+            if (moviesFound > 0) {
+                noResultsMsg.style.display = 'none'; 
+            } else {
+                noResultsMsg.style.display = 'block'; 
+            }
+        }
+        
+        searchBtn.addEventListener('click', filterMovies);
+        genreFilter.addEventListener('change', filterMovies);
+        searchInput.addEventListener('input', filterMovies);
+        
+        const bookNowButtons = document.querySelectorAll('.book-btn');
+        bookNowButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                    const movieCard = this.parentElement; 
+                    const movieTitle = movieCard.querySelector('img').getAttribute('alt');
+                    localStorage.setItem('selectedMovie', movieTitle);
+                    window.location.href = 'booking.html';
+            });
+        });
+    </script>
+</body>
+</html>

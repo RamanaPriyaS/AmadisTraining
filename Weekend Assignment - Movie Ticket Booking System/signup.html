@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MovizBook - Sign Up</title>
+    <link rel="icon" href="Images/MovizBook.png">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        main form {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 30px;
+            flex-direction: column;
+            gap:30px;
+        }
+        button{
+            background-color: rgb(255, 252, 252);
+        }
+        button:hover{
+            background-color: rgb(119, 119, 119);
+            cursor: pointer;
+        }
+        #signup {
+            display: flex;
+            flex-direction: column;
+            align-items: center; 
+            width: 100%;
+            max-width: 450px;
+            margin: 60px auto; 
+            padding: 40px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            background-color: #ffffff;
+        }
+    </style>
+</head>
+<body>
+    <header>
+       <nav>
+            <div class="logo">
+                <img src="Images/MovizBook.png" width="100px" alt="MovizBook Logo"> 
+                <span> MovizBook</span>
+            </div>
+            <div class="nav-link">
+                <a href="login.html">Login</a>
+                <a href="#signup">Sign Up</a>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <form id="signup">
+            <h2>Sign Up</h2>
+            <div class="input-group">
+                <label for="name">Name : </label>
+                <input id="name" placeholder="Enter your Name" type="text" required>
+            </div>
+            <div class="input-group">
+                <label for="email">Email : </label>
+                <input id="email" type="email" placeholder="Enter Email ID" required>
+            </div>
+            <div class="input-group">
+                <label for="password">Password : </label>
+                <input id="password" type="password" placeholder="Enter Password" required>
+            </div>
+            <button type="submit" class="button-container">Sign Up</button>
+        </form>
+    </main>
+    <script>
+        const signupForm = document.getElementById('signup');
+        
+        signupForm.addEventListener('submit', function(event){
+            event.preventDefault();
+            
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            
+            // Validations
+            if(name.length < 3){
+                alert("Name must be at least 3 characters long");
+                return;
+            }
+            if(!email.includes("@") || !email.includes(".")){
+                alert("Invalid email address");
+                return;
+            }
+            if(password.length < 6){
+                alert("Password must be at least 6 characters long");
+                return;
+            }
+
+            let users = JSON.parse(localStorage.getItem('registeredUsers')) || [];
+
+            const userExists = users.some(user => user.email === email);
+            if (userExists) {
+                alert("An account with this email already exists. Please log in.");
+                window.location.href = "login.html";
+                return;
+            }
+            users.push({ name: name, email: email, password: password });
+            localStorage.setItem('registeredUsers', JSON.stringify(users));
+            sessionStorage.setItem('loggedInUser', email); 
+            alert("Sign up successful!");
+            window.location.href = "user-home.html";
+        });
+    </script>
+</body>
+</html>

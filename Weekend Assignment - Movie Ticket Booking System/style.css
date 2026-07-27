@@ -1,0 +1,42 @@
+nav{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 20px;
+           
+        }
+        .logo{
+            display: flex;
+            align-items: center;
+            font-size: 40px;
+            gap:20px;
+            flex-shrink: 0;
+       }
+       .nav-link{
+        display: flex;
+        font-size: 20px;
+        gap:20px;
+        text-decoration: none; 
+        color: black;       
+         flex-shrink: 0;
+       }
+       nav a:hover{
+        text-decoration: underline;
+       }
+@media (max-width: 768px) {
+    nav {
+        padding: 15px; 
+        gap: 15px;
+    }
+    .logo {
+        font-size: 40px; 
+        gap: 10px;
+    }
+    .logo img {
+        width: 60px;
+    }
+    nav a {
+        font-size: 15px; 
+    }
+}
+
