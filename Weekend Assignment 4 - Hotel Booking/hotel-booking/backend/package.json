@@ -1,0 +1,24 @@
+{
+  "name": "hotel-booking-backend",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Hotel Booking System API — Fastify + Sequelize + JWT",
+  "main": "src/index.js",
+  "scripts": {
+    "dev": "node --watch src/index.js",
+    "start": "node src/index.js",
+    "seed": "node src/seed/seed.js"
+  },
+  "dependencies": {
+    "@fastify/cors": "^9.0.1",
+    "@fastify/jwt": "^8.0.1",
+    "bcryptjs": "^2.4.3",
+    "dotenv": "^16.4.5",
+    "fastify": "^4.28.1",
+    "nodemailer": "^6.9.14",
+    "pg": "^8.12.0",
+    "pg-hstore": "^2.3.4",
+    "sequelize": "^6.37.3",
+    "umzug": "^3.8.3"
+  }
+}
